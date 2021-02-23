@@ -1,21 +1,15 @@
 function createObj(str) {
-    if (typeof str == 'string') {        
-        const res = {};
-        const set = [...new Set(str.split('.'))];
+    const keys = str.split('.');
+    const res = {};
 
-        if (set.length == 1) {
-            res[set] = null;
+    keys.reduce((val, el, index) => {
+        if (index < keys.length - 1) {
+            val[el] = {};
         }
+        else val[el] = null;
 
-        if (set.length > 1) {
-            set.forEach((el, index) => {
-                if (index < set.length - 1) {
-                    res[el] = {};
-                }
-                else res[el] = null;
-            })
-        } 
-        
-        return res;
-    }
+        return val[el];
+    }, res)
+
+    return res;
 }
