@@ -1,5 +1,5 @@
 function bindPoly(func, context) {
-    return function(args) {
+    return function() {
         return func.apply(context, args);
     }
 }

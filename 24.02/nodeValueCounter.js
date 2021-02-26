@@ -17,16 +17,20 @@ let tree = {
     ]
 }
 
-let res = 0;
-
 function counter(obj) {
-    res += obj.valueNode;
+    let res = 0;
 
-    if (obj.next != null) {
-        for (let i = 0; i < obj.next.length; i++) {
-            counter(obj.next[i])
+    function deep(obj) {
+        res += obj.valueNode;
+
+        if (obj.next != null) {
+            obj.next.forEach(el => {
+                deep(el);
+            })
         }
+
+        return res;
     }
 
-    return res;
+    return deep(obj);
 }
