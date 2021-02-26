@@ -5,11 +5,7 @@ function bindPoly(func, context) {
 }
 
 function objCreate(proto) {
-    function Text() {
-        obj = {};
-        obj.__proto__ = proto;
-        return obj;
-    }
-
-    return new Text();
+    const obj = {};
+    obj.__proto__ = proto;
+    return obj;
 }
